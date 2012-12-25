@@ -1,7 +1,6 @@
 <?php
 
-define("BASEPATH" , __DIR__ );
-
+define("BASEPATH", __DIR__ );
 trait GenericHelper {
 
 	public function explain() {
@@ -31,10 +30,11 @@ $config = array(
 	)
 );
 
-require_once( __DIR__ . "/lib/Cores/Application.php");
+require_once( BASEPATH . "/lib/Cores/Application.php");
 
 $app = new Cores\Application();
 $app->configure( $config );
-$app->addFeed("PHPMaster_feed.xml");
+$app->addFeed("file", "PHPMaster_feed.xml");
+//$app->addFeed("url","http://feeds.feedburner.com/PHPMaster_feed");
 $app->init();
 $app->explain();

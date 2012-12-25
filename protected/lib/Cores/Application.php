@@ -15,6 +15,7 @@ class Application {
 	public function __construct() {
 		require_once("AppLoader.php");
 		$this->loader = new AppLoader();
+		$this->parser = new RSSParser();
 	}
 
 	public function __get( $key ) {
@@ -32,12 +33,11 @@ class Application {
 
 	public function configure( $config ) {
 		$this->config = new Configurator( $config );
-		$this->parser = new RSSParser();
 	}
 
-	public function addFeed( $feed ) {
+	public function addFeed( $type , $feed ) {
 		$this->feeds[$feed] = $feed;
-		$this->parser->attach( $feed );
+		$this->parser->attach( $type , $feed );
 	}
 
 	public function init() {
