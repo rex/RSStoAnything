@@ -2,16 +2,11 @@
 
 namespace Cores;
 
-use Traits\GenericHelper;
-
 class AppLoader {
 
-	public $classes;
-	public $cores;
-	public $interfaces;
-	public $services;
-	public $traits;
-	public $views;
+	use \GenericHelper;
+
+	public $classes,$cores,$interfaces,$services,$traits,$views;
 
 	public function __construct() {
 		spl_autoload_register( array( $this, "load" ) );
@@ -24,11 +19,11 @@ class AppLoader {
 		$className = $split[1];
 		$this->{$namespace}[] = $className;
 		//var_dump( array( $split , $class , $namespace , $className , $this ) );
-		var_dump( $class );
+		print "New class loaded: $class. <br />";
 	}
 
 	private function getPath( $className ) {
-		return "lib/" . str_replace( "\\" , "/" , $className ) . ".php";
+		return BASEPATH . "/lib/" . str_replace( "\\" , "/" , $className ) . ".php";
 	}
 
 }

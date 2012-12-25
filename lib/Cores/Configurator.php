@@ -2,16 +2,15 @@
 
 namespace Cores;
 
-use Traits\GenericHelper;
+class Configurator extends Application {
 
-class Configurator {
+	use \GenericHelper;
 
 	public $config;
 	public $services;
 
 	public function __construct( $config = null ) {
 		$this->config = $config;
-		$this->init();
 	}
 
 	public function __get( $key ) {
@@ -22,12 +21,6 @@ class Configurator {
 
 	public function __set( $key , $value ) {
 		$this->config[ $key ] = $value;
-	}
-
-	protected function init() {
-		foreach( $this->config['services'] as $service => $config ) {
-			$this->attach( $service , $config );
-		}
 	}
 
 	public function attach( $service , $config ) {

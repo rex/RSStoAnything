@@ -2,9 +2,9 @@
 
 namespace Interfaces;
 
-use Traits\GenericHelper;
-
 interface NodeViewInterface {
+
+	use \GenericHelper;
 
 	public function __get( $key );
 

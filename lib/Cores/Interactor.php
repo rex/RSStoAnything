@@ -2,9 +2,9 @@
 
 namespace Cores;
 
-use Traits\GenericHelper;
-
 abstract class Interactor implements Interfaces\ServiceInterface {
+
+	use \GenericHelper;
 
 	public $service;
 

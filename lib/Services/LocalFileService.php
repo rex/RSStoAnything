@@ -2,9 +2,9 @@
 
 namespace Services;
 
-use Traits\GenericHelper;
-
 class LocalFileService extends Cores\Interactor {
+
+	use \GenericHelper;
 
 	function __construct() {
 		//

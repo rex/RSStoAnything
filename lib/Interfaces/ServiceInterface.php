@@ -2,9 +2,9 @@
 
 namespace Interfaces;
 
-use Traits\GenericHelper;
-
 interface ServiceInterface {
+
+	use \GenericHelper;
 
 	public function __construct();
 

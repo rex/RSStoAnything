@@ -2,9 +2,9 @@
 
 namespace Views;
 
-use Traits\GenericHelper;
-
 class NodeView implements Interfaces\NodeViewInterface {
+
+	use \GenericHelper;
 
 	public function __get( $key );
 
