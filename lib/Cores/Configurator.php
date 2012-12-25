@@ -2,7 +2,7 @@
 
 namespace Cores;
 
-class Configurator extends Application {
+class Configurator {
 
 	use \GenericHelper;
 

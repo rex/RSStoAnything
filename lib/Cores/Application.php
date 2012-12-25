@@ -6,11 +6,11 @@ class Application {
 
 	use \GenericHelper;
 
-	public $feed;
+	public $feeds;
 	public $loader;
-	public $app;
 	public $config;
-	public $parsedFeed;
+	public $parser;
+	public $parsedFeeds;
 
 	public function __construct() {
 		require_once("AppLoader.php");
@@ -32,11 +32,16 @@ class Application {
 
 	public function configure( $config ) {
 		$this->config = new Configurator( $config );
+		$this->parser = new RSSParser();
 	}
 
-	public function init( $feed ) {
-		$this->feed = $feed;
-		$this->parsedFeed = new RSSParser( $this->feed );
+	public function attach( $feed ) {
+		$this->feeds[$feed] = $feed;
+		$this->parser->attach( $feed );
+	}
+
+	public function init() {
+		$this->parser->parse();
 	}
 
 }
