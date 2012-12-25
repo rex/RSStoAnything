@@ -35,7 +35,7 @@ class Application {
 		$this->parser = new RSSParser();
 	}
 
-	public function attach( $feed ) {
+	public function addFeed( $feed ) {
 		$this->feeds[$feed] = $feed;
 		$this->parser->attach( $feed );
 	}

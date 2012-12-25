@@ -35,6 +35,6 @@ require_once( __DIR__ . "/lib/Cores/Application.php");
 
 $app = new Cores\Application();
 $app->configure( $config );
-$app->attach("PHPMaster_feed.xml");
+$app->addFeed("PHPMaster_feed.xml");
 $app->init();
 $app->explain();
