@@ -1,6 +1,7 @@
 <?php
 
 define("BASEPATH", __DIR__ );
+
 trait GenericHelper {
 
 	public function explain() {

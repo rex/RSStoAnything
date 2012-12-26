@@ -2,7 +2,7 @@
 
 namespace Cores;
 
-class RSSParser extends Application {
+class RSSParser {
 
 	use \GenericHelper;
 
@@ -17,14 +17,14 @@ class RSSParser extends Application {
 	public function attach( $type , $entity ) {
 		switch ( $type ) {
 			case 'url':
-				$contents = file_get_contents( $entity );
-				$this->feeds[$entity] = new \SimpleXmlElement( $contents );
+				$contents = new \SimpleXmlElement( file_get_contents( $entity ) );
+				$this->feeds[$entity] = new \Classes\Feed( $contents );
 				break;
 			case 'file':
-				$this->feeds[$entity] = simplexml_load_file( $entity );
+				$this->feeds[$entity] = new \Classes\Feed( simplexml_load_file( $entity ) );
 				break;
 			case 'string':
-				$this->feeds["string"] = simplexml_load_string( $entity );
+				$this->feeds["string"] = new \Classes\Feed( simplexml_load_string( $entity ) );
 				break;
 			default:
 				break;
@@ -33,10 +33,9 @@ class RSSParser extends Application {
 	}
 
 	public function parse() {
-		foreach( $this->feeds as $name => $contents ) { 
-			print "Parsing feed: $name <br />";
-			var_dump( $contents->link );
-			var_dump( $contents );
+		foreach( $this->feeds as $feed => $contents ) { 
+			print "Parsing feed: $contents->title <br />";
+			$this->feeds[ $feed ] = $contents;
 		}
 
 	}
